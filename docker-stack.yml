@@ -5,7 +5,7 @@ version: "3.8"
 
 services:
   web:
-    image: dockerwebsitebynginx:latest   # image built locally or pushed to a registry
+    image: psrao2025/dockerwebsitebynginx:latest   # image built locally or pushed to a registry
     # OR build section can be used only for docker-compose, not for docker stack
     # so ensure you build & push before deploy:
     # docker build -t <user>/dockerwebsitebynginx:latest .
