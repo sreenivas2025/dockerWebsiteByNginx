@@ -1,0 +1,26 @@
+# This file is used to deploy the static Nginx web app on Docker Swarm
+# Save as: docker-stack.yml
+
+version: "3.8"
+
+services:
+  web:
+    image: dockerwebsitebynginx:latest   # image built locally or pushed to a registry
+    # OR build section can be used only for docker-compose, not for docker stack
+    # so ensure you build & push before deploy:
+    # docker build -t <user>/dockerwebsitebynginx:latest .
+    # docker push <user>/dockerwebsitebynginx:latest
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 2            # number of running containers
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == worker]
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: overlay
