@@ -11,7 +11,7 @@ services:
     # docker build -t <user>/dockerwebsitebynginx:latest .
     # docker push <user>/dockerwebsitebynginx:latest
     ports:
-      - "80:80"
+      - "5000:80"
     deploy:
       replicas: 2            # number of running containers
       restart_policy:
